@@ -78,9 +78,9 @@ By specifying the `-u` flag, you can point the pipeline at a GitHub project URL.
 
 `./ssl-metrics-pipeline.bash -u https://github.com/numpy/numpy`
 
-### Iterating Over A List of URLS
+### Iterating Over A List of URLs
 
-If you have a list of URLS, you can pipe it into the progam with the following (or similar) syntax:
+If you have a list of URLs, you can pipe it into the progam with the following (or similar) syntax:
 
 `cat URLs.txt | xargs -l ./ssl-metrics-pipeline.bash -u`
 
