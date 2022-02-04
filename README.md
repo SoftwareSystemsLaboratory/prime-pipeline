@@ -37,9 +37,9 @@ To maximize the utility of this project the following software packages are **re
 
 ### Operating System
 
-All tools developed for the greater SSL Metrics project **must target** Mac OS and Linux. SSL Metrics software is not supported or recommended to run on Windows *but can be modified to do so at your own risk*.
+All tools developed for the greater SSL Metrics project **target** Mac OS and Linux. SSL Metrics software is not supported or recommended to run on Windows *but can be modified to do so at your own risk*.
 
-It is recomendded to develop on Mac OS or Linux. However, if you are on a Windows machine, you can use WSL to develop as well.
+It is recomendded to run on Mac OS or Linux. However, if you are on a Windows machine, you can use WSL to run this software as well.
 
 ### Shell Software
 
