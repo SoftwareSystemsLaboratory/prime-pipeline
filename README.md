@@ -1,6 +1,6 @@
 # Software Systems Laboratory Metrics Pipeline
 
-> A bash script to calculate the metrics of a remote repository
+> A `bash` script to calculate the metrics of a remote GitHub repository
 
 ![[https://img.shields.io/badge/shell-bash-blue](https://img.shields.io/badge/shell-bash-blue)](https://img.shields.io/badge/shell-bash-blue)
 ![[https://img.shields.io/badge/DOI-Example-red](https://img.shields.io/badge/DOI-Example-red)](https://img.shields.io/badge/DOI-Example-red)
