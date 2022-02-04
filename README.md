@@ -3,7 +3,7 @@
 > A `bash` script to calculate the metrics of a remote GitHub repository
 
 ![[https://img.shields.io/badge/shell-bash-blue](https://img.shields.io/badge/shell-bash-blue)](https://img.shields.io/badge/shell-bash-blue)
-![[https://img.shields.io/badge/DOI-Example-red](https://img.shields.io/badge/DOI-Example-red)](https://img.shields.io/badge/DOI-Example-red)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5967365.svg)](https://doi.org/10.5281/zenodo.5967365)
 [![Release Project](https://github.com/SoftwareSystemsLaboratory/ssl-metrics-pipeline/actions/workflows/release.yml/badge.svg)](https://github.com/SoftwareSystemsLaboratory/ssl-metrics-pipeline/actions/workflows/release.yml)
 ![[https://img.shields.io/badge/license-BSD--3-yellow](https://img.shields.io/badge/license-BSD--3-yellow)](https://img.shields.io/badge/license-BSD--3-yellow)
 
