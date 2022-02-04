@@ -1,15 +1,14 @@
-# Software Systems Laboratory Template Python Project
+# Software Systems Laboratory Metrics Pipeline
 
-> A template Python project for bootstrapping tool development
+> A bash script to calculate the metrics of a remote repository
 
-![[https://img.shields.io/badge/python-3.9.6%20%7C%203.10-blue](https://img.shields.io/badge/python-3.9.6%20%7C%203.10-blue)](https://img.shields.io/badge/python-3.9.6%20%7C%203.10-blue)
+![[https://img.shields.io/badge/shell-bash-blue](https://img.shields.io/badge/shell-bash-blue)](https://img.shields.io/badge/shell-bash-blue)
 ![[https://img.shields.io/badge/DOI-Example-red](https://img.shields.io/badge/DOI-Example-red)](https://img.shields.io/badge/DOI-Example-red)
-![[https://img.shields.io/badge/build-Example-red](https://img.shields.io/badge/build-Example-red)](https://img.shields.io/badge/build-Example-red)
 ![[https://img.shields.io/badge/license-BSD--3-yellow](https://img.shields.io/badge/license-BSD--3-yellow)](https://img.shields.io/badge/license-BSD--3-yellow)
 
 ## Table of Contents
 
-- [Software Systems Laboratory Template Python Project](#software-systems-laboratory-template-python-project)
+- [Software Systems Laboratory Metrics Pipeline](#software-systems-laboratory-metrics-pipeline)
   - [Table of Contents](#table-of-contents)
   - [About](#about)
   - [Tooling](#tooling)
@@ -21,7 +20,7 @@
 
 ## About
 
-The Software Systems Laboratory (SSL) Template Python Project is a `git` repository that can be cloned and modified to bootstrap development of tools for the greater SSL Metrics project. It can also be modified by outside teams or individuals for usage of their own personal projects.
+The Software Systems Laboratory (SSL) Pipeline Project is a `bash` script that can be executed within a *configured* environment to calculate metrics for a (or multiple) **remote** repositories hosted on GitHub.
 
 This project is licensed under the BSD-3-Clause. See the [LICENSE](LICENSE) for more information.
 
