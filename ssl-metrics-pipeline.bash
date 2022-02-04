@@ -4,7 +4,7 @@
 cwd=$PWD
 githubURL=${githubURL:-https://github.com/golang/go}
 
-while getopts u:p: flag
+while getopts u: flag
 do
     case "${flag}" in
         u) githubURL=${OPTARG};;
@@ -44,3 +44,6 @@ jsonFilename=../${repoFolder}_${tool}_${gitDate}.json
 ssl-metrics-git-commits-loc-extract -d . -b HEAD -o $jsonFilename
 cd $cwd
 echo ""
+
+# Delete project folder
+yes | rm -r $repoFolder

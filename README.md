@@ -18,10 +18,15 @@
       - [Optional Shell Software](#optional-shell-software)
     - [Python Software](#python-software)
   - [How To Use](#how-to-use)
+    - [Default Usage](#default-usage)
+    - [Custom URL](#custom-url)
+    - [Iterating Over A List of URLS](#iterating-over-a-list-of-urls)
 
 ## About
 
 The Software Systems Laboratory (SSL) Pipeline Project is a `bash` script that can be executed within a *configured* environment to calculate metrics for a (or multiple) **remote** repositories hosted on GitHub.
+
+The pipeline *only* calculates metrics for the `HEAD` branch of a repository.
 
 This project is licensed under the BSD-3-Clause. See the [LICENSE](LICENSE) for more information.
 
@@ -59,3 +64,21 @@ You can install the Python software with this one-liner:
 `pip install --upgrade pip ssl-metrics-meta`
 
 ## How To Use
+
+### Default Usage
+
+The default usage analyzes the [golang/go](https://github.com/golang/go) project.
+
+`./ssl-metrics-pipeline.bash`
+
+### Custom URL
+
+By specifying the `-u` flag, you can point the pipeline at a GitHub project URL.
+
+`./ssl-metrics-pipeline.bash -u https://github.com/numpy/numpy`
+
+### Iterating Over A List of URLS
+
+If you have a list of URLS, you can pipe it into the progam with the following (or similar) syntax:
+
+`cat URLs.txt | xargs ./ssl-metrics-pipeline.bash -u {}`
