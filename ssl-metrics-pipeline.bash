@@ -7,7 +7,7 @@ gitBranch() {
 
 # Set defaults
 cwd=$PWD
-githubURL=${githubURL:-https://github.com/LoyolaChicagoCS/coursedescriptions}
+githubURL=${githubURL:-https://github.com/golang/go}
 
 while getopts u:p: flag
 do
