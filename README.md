@@ -91,4 +91,4 @@ If you have `parallel` installed, you can use the following (or similar) syntax 
 
 `cat URLs.txt | parallel -j 2 ./ssl-metrics-pipeline.bash -u`
 
-**NOTE**: Replace `4` with a *n* number of jobs you want to execute in parallel.
+**NOTE**: Replace `2` with a *n* number of jobs you want to execute in parallel.
