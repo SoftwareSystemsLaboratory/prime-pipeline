@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Package project
-        run: tar -zcf ssl-metrics-pipeline.tar.gz --exclude="env" --exclude=".github" --exclude=".git" --ignore-failed-read .
+        run: tar -zcf ssl-metrics-pipeline.tar.gz --exclude="env" --exclude=".github" --exclude=".git" --exclude=ssl-metrics-pipeline.tar.gz .
 
       - name: Release to GitHub
         uses: softprops/action-gh-release@v1
