@@ -51,7 +51,6 @@ It is recomendded to develop on Mac OS or Linux. However, if you are on a Window
 
 For reasons why you might want to install this software, see the [Parallel Execution](#parallel-execution) section.
 
-- `jq`
 - `parallel`
 
 ### Python Software
