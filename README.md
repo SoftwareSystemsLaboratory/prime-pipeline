@@ -14,9 +14,10 @@
   - [Tooling](#tooling)
     - [Operating System](#operating-system)
     - [Shell Software](#shell-software)
+      - [Required Shell Software](#required-shell-software)
+      - [Optional Shell Software](#optional-shell-software)
     - [Python Software](#python-software)
   - [How To Use](#how-to-use)
-  - [Changes To Make To Your Project](#changes-to-make-to-your-project)
 
 ## About
 
@@ -26,7 +27,7 @@ This project is licensed under the BSD-3-Clause. See the [LICENSE](LICENSE) for 
 
 ## Tooling
 
-To maximize the utility of this project and the greater SSL Metrics project, the following software packages are **required**:
+To maximize the utility of this project the following software packages are **required**:
 
 ### Operating System
 
@@ -36,30 +37,25 @@ It is recomendded to develop on Mac OS or Linux. However, if you are on a Window
 
 ### Shell Software
 
+#### Required Shell Software
+
 - `git`
+
+#### Optional Shell Software
+
+For reasons why you might want to install this software, see the [Parallel Execution](#parallel-execution) section.
+
 - `jq`
-- `wc`
+- `parallel`
 
 ### Python Software
 
-> The software listed in this section is meant for developing tools
-
 All listed Python software assumes that you have downloaded and installed **Python 3.9.6** or greater.
 
-- `black`
-- `build`
-- `isort`
-- `pylint`
+- `ssl-metrics-meta`
 
-You can install all of the Python software with this one-liner:
+You can install the Python software with this one-liner:
 
-`pip install --upgrade black build isort pip pylint`
+`pip install --upgrade pip ssl-metrics-meta`
 
 ## How To Use
-
-It is recomended to create a new repository with GitHub referencing this template and then cloning the new repository.
-
-## Changes To Make To Your Project
-
-1. Change the name of the package folder from `ssl_metrics_MODULE_NAME` to your packages name
-2. Fix all `TODOs`
