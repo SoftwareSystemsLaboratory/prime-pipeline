@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Get the current working git branch
-gitBranch() {
-        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-
 # Set defaults
 cwd=$PWD
 githubURL=${githubURL:-https://github.com/golang/go}
@@ -46,6 +41,6 @@ fi
 echo "Running ssl-metrics-git-commits-loc"
 tool=ssl-metrics-git-commits-loc
 jsonFilename=../${repoFolder}_${tool}_${gitDate}.json
-ssl-metrics-git-commits-loc-extract -d . -b $(gitBranch) -o $jsonFilename
+ssl-metrics-git-commits-loc-extract -d . -b HEAD -o $jsonFilename
 cd $cwd
 echo ""
