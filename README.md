@@ -21,6 +21,7 @@
     - [Default Usage](#default-usage)
     - [Custom URL](#custom-url)
     - [Iterating Over A List of URLS](#iterating-over-a-list-of-urls)
+      - [Parallel Execution](#parallel-execution)
 
 ## About
 
@@ -81,4 +82,12 @@ By specifying the `-u` flag, you can point the pipeline at a GitHub project URL.
 
 If you have a list of URLS, you can pipe it into the progam with the following (or similar) syntax:
 
-`cat URLs.txt | xargs ./ssl-metrics-pipeline.bash -u {}`
+`cat URLs.txt | xargs -l ./ssl-metrics-pipeline.bash -u`
+
+**NOTE**: Replace `URLs.txt` with a `.txt` file with every line containing **1 (one)** GitHub URL.
+
+#### Parallel Execution
+
+If you have `parallel` installed, you can use the following syntax to process mutliple repositories at once.
+
+`cat URLs.txt | xargs -l ./ssl-metrics-pipeline.bash -u`
