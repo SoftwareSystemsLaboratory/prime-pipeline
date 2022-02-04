@@ -88,6 +88,8 @@ If you have a list of URLS, you can pipe it into the progam with the following (
 
 #### Parallel Execution
 
-If you have `parallel` installed, you can use the following syntax to process mutliple repositories at once.
+If you have `parallel` installed, you can use the following (or similar) syntax to process mutliple repositories at once.
 
-`cat URLs.txt | xargs -l ./ssl-metrics-pipeline.bash -u`
+`cat URLs.txt | parallel -j 2 ./ssl-metrics-pipeline.bash -u`
+
+**NOTE**: Replace `4` with a *n* number of jobs you want to execute in parallel.
