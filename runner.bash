@@ -13,7 +13,6 @@ graphsDir=graphs-$dt
 mkdir $jsonDir
 mkdir $graphsDir
 
-exit
 source env/bin/activate
 
 git clone $1
