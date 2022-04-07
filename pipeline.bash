@@ -4,4 +4,4 @@
 
 token=$1
 
-cat githubRepositories.txt | parallel tmux new-session -d "./runner.bash {} $token"
+cat githubRepositories.txt | parallel -j 5 tmux new-session -d "./runner.bash {} $token"
