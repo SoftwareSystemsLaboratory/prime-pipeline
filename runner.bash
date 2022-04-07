@@ -1,7 +1,5 @@
 #!/bin/bash
-
 # This is the progam that analyzes a single repository
-
 dt=$(date -d "today" +"%Y_%m_%d_%H_%M")
 token=$2
 repositoryFolder=$(basename $1 .git)

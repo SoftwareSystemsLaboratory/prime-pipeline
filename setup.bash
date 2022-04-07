@@ -1,7 +1,5 @@
 #!/bin/bash
-
 # Setup a folder to run the pipeline
-
 dt=$(date -d "today" +"%Y_%m_%d_%H_%M")
 jobsDir=jobs-$dt
 
