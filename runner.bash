@@ -41,3 +41,7 @@ ssl-metrics-git-productivity-compute -i $jsonDir/commits_$repositoryFolder-$dt.j
 
 # Graph productivity
 python graph.py -i $jsonDir/p_$repositoryFolder-$dt.json -o $graphsDir/p_$repositoryFolder-$dt.pdf
+
+# Sync outputs to GDrive
+rclone copy $jsonDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$jsonDir
+rclone copy $graphsDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$graphsDir
