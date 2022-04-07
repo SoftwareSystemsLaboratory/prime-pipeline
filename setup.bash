@@ -10,3 +10,6 @@ cd $jobsDir
 python3.10 -m venv env
 source env/bin/activate
 pip install ssl-metrics-meta
+
+echo ---
+echo $jobsDir
