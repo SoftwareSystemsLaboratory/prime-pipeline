@@ -1,6 +1,0 @@
-https://github.com/ArduPilot/ardupilot
-https://github.com/Autoware-AI/autoware.ai
-https://github.com/PX4/PX4-Autopilot
-https://github.com/PointCloudLibrary/pcl
-https://github.com/apolloconfig/apollo
-https://github.com/opencv/opencv
