@@ -10,8 +10,8 @@ jsonDir=json-$dt
 graphsDir=graphs-$dt
 
 mkdir $rootDir
-mkdir $rootDir/$rootDir/$jsonDir
-mkdir $rootDir/$rootDir/$graphsDir
+mkdir $rootDir/$jsonDir
+mkdir $rootDir/$graphsDir
 
 source env/bin/activate
 
