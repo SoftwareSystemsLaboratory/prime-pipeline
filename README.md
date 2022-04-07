@@ -20,6 +20,7 @@
   - [How To Use](#how-to-use)
     - [Setting up the Pipeline](#setting-up-the-pipeline)
     - [Executing the Pipeline](#executing-the-pipeline)
+    - [Google Drive Upload](#google-drive-upload)
 
 ## About
 
@@ -46,6 +47,9 @@ It is recomendded to run on Mac OS or Linux. However, if you are on a Windows ma
 - `git`
 - `parallel`
 - `wget`
+- `rclone`
+- `tmux`
+- `python3.10`
 
 ### Python Software
 
@@ -72,6 +76,15 @@ It takes a GitHub Personal Access Token and a file containing a list of Github R
 
 For an example GitHub Repository URL file, see [githubRepositories.txt](githubRepositories.txt).
 
-- `./pipeline.bash $GH_TOKEN`
+- `./pipeline.bash $GH_TOKEN githubRepositories.txt`
 
-Where $GH_TOKEN is a GitHub Personal Access Token or shell variable referencing it.
+Where `$GH_TOKEN` is a GitHub Personal Access Token or shell variable referencing it.
+
+`githubRepositories.txt` can be replaced with any file containing GitHub Repository URLs.
+
+**NOTE:** The name of this text file will be used to create a folder containing all of the repositories analyzed and their analysis files.
+
+### Google Drive Upload
+
+This pipeline is configured to upload results to a Google Drive folder via `rclone`.
+If you don't want to do this, comment out or change the last lines in the `runner.bash` file.
