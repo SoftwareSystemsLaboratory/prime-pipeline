@@ -34,7 +34,7 @@ ssl-metrics-git-bus-factor-graph -i $rootDir/$jsonDir/bf_$repositoryFolder-$dt.j
 ssl-metrics-github-issue-density-compute -c $rootDir/$jsonDir/commits_$repositoryFolder-$dt.json -i $rootDir/$jsonDir/issues_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/id_$repositoryFolder-$dt.json
 
 # Graph issue density
-ssl-metrics-github-issue-density-compute -i $rootDir/$jsonDir/id_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/id_$repositoryFolder-$dt.pdf --title $githubShortCode" Issue Density" --x-label "Day" --y-label "Issue Density" --stylesheet style.mplstyle
+ssl-metrics-github-issue-density-graph -i $rootDir/$jsonDir/id_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/id_$repositoryFolder-$dt.pdf --title $githubShortCode" Issue Density" --x-label "Day" --y-label "Issue Density" --stylesheet style.mplstyle
 
 # Compute productivity
 ssl-metrics-git-productivity-compute -i $rootDir/$jsonDir/commits_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/p_$repositoryFolder-$dt.json
