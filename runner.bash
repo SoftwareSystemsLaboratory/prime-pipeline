@@ -46,7 +46,7 @@ ssl-metrics-git-productivity-graph -i $rootDir/$jsonDir/p_$repositoryFolder-$dt.
 ssl-metrics-github-issue-spoilage-compute -i $rootDir/$jsonDir/issues_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/is_$repositoryFolder-$dt.json
 
 # Graph issue spoilage
-ssl-metrics-github-issue-spoilage-graph -i $rootDir/$jsonDir/p_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/p_$repositoryFolder-$dt.pdf --title $githubShortCode" Issue Spoilage" --x-label "Day" --y-label "Issue Spoilage" --stylesheet style.mplstyle
+ssl-metrics-github-issue-spoilage-graph -i $rootDir/$jsonDir/is_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/is_$repositoryFolder-$dt.pdf --title $githubShortCode" Issue Spoilage" --x-label "Day" --y-label "Issue Spoilage" --stylesheet style.mplstyle
 
 # Sync outputs to GDrive
 rclone copy $rootDir/$jsonDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$rootDir/$jsonDir
