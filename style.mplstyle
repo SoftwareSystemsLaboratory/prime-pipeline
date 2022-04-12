@@ -4,3 +4,4 @@ font.size: 8
 savefig.bbox: tight
 savefig.pad_inches: 0
 savefig.transparent: True
+lines.color: maroon

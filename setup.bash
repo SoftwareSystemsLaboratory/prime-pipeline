@@ -9,7 +9,7 @@ cd $jobsDir
 
 python3.10 -m venv env
 source env/bin/activate
-pip install ssl-metrics-meta
+pip install -r requirements.txt
 
 echo ---
-echo $jobsDir
+echo "New folder created at: "$jobsDir
