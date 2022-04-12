@@ -28,19 +28,25 @@ ssl-metrics-github-issues-collect -p -r $githubShortCode -o $rootDir/$jsonDir/is
 ssl-metrics-git-bus-factor-compute -i $rootDir/$jsonDir/commits_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/bf_$repositoryFolder-$dt.json
 
 # Graph bus factor
-python graph.py -i $rootDir/$jsonDir/bf_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/bf_$repositoryFolder-$dt.pdf
+ssl-metrics-git-bus-factor-graph -i $rootDir/$jsonDir/bf_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/bf_$repositoryFolder-$dt.pdf --type bar --title $githubShortCode" Bus Factor" --x-label "Day" --y-label "Bus Factor" --stylesheet style.mplstyle
 
 # Compute issue density
 ssl-metrics-github-issue-density-compute -c $rootDir/$jsonDir/commits_$repositoryFolder-$dt.json -i $rootDir/$jsonDir/issues_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/id_$repositoryFolder-$dt.json
 
 # Graph issue density
-python graph.py -i $rootDir/$jsonDir/id_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/id_$repositoryFolder-$dt.pdf
+ssl-metrics-github-issue-density-compute -i $rootDir/$jsonDir/id_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/id_$repositoryFolder-$dt.pdf --title $githubShortCode" Issue Density" --x-label "Day" --y-label "Issue Density" --stylesheet style.mplstyle
 
 # Compute productivity
 ssl-metrics-git-productivity-compute -i $rootDir/$jsonDir/commits_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/p_$repositoryFolder-$dt.json
 
 # Graph productivity
-python graph.py -i $rootDir/$jsonDir/p_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/p_$repositoryFolder-$dt.pdf
+ssl-metrics-git-productivity-graph -i $rootDir/$jsonDir/p_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/p_$repositoryFolder-$dt.pdf --title $githubShortCode" Productivity" --x-label "Day" --y-label "Productivity" --stylesheet style.mplstyle
+
+# Compute issue spoilage
+ssl-metrics-github-issue-spoilage-compute -i $rootDir/$jsonDir/issues_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/is_$repositoryFolder-$dt.json
+
+# Graph issue spoilage
+ssl-metrics-github-issue-spoilage-graph -i $rootDir/$jsonDir/p_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/p_$repositoryFolder-$dt.pdf --title $githubShortCode" Issue Spoilage" --x-label "Day" --y-label "Issue Spoilage" --stylesheet style.mplstyle
 
 # Sync outputs to GDrive
 rclone copy $rootDir/$jsonDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$rootDir/$jsonDir
