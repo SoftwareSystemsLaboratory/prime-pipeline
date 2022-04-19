@@ -34,7 +34,7 @@ ssl-metrics-git-bus-factor-graph -i $rootDir/$jsonDir/bf_$repositoryFolder-$dt.j
 ssl-metrics-github-issue-density-compute -c $rootDir/$jsonDir/commits_$repositoryFolder-$dt.json -i $rootDir/$jsonDir/issues_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/id_$repositoryFolder-$dt.json
 
 # Graph issue density
-ssl-metrics-github-issue-density-compute -i $rootDir/$jsonDir/id_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/id_$repositoryFolder-$dt.pdf --title $githubShortCode" Issue Density" --x-label "Day" --y-label "Issue Density" --stylesheet style.mplstyle
+ssl-metrics-github-issue-density-graph -i $rootDir/$jsonDir/id_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/id_$repositoryFolder-$dt.pdf --title $githubShortCode" Issue Density" --x-label "Day" --y-label "Issue Density" --stylesheet style.mplstyle
 
 # Compute productivity
 ssl-metrics-git-productivity-compute -i $rootDir/$jsonDir/commits_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/p_$repositoryFolder-$dt.json
@@ -46,7 +46,7 @@ ssl-metrics-git-productivity-graph -i $rootDir/$jsonDir/p_$repositoryFolder-$dt.
 ssl-metrics-github-issue-spoilage-compute -i $rootDir/$jsonDir/issues_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/is_$repositoryFolder-$dt.json
 
 # Graph issue spoilage
-ssl-metrics-github-issue-spoilage-graph -i $rootDir/$jsonDir/p_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/p_$repositoryFolder-$dt.pdf --title $githubShortCode" Issue Spoilage" --x-label "Day" --y-label "Issue Spoilage" --stylesheet style.mplstyle
+ssl-metrics-github-issue-spoilage-graph -i $rootDir/$jsonDir/is_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/is_$repositoryFolder-$dt.pdf --title $githubShortCode" Issue Spoilage" --x-label "Day" --y-label "Issue Spoilage" --stylesheet style.mplstyle
 
 # Sync outputs to GDrive
 rclone copy $rootDir/$jsonDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir/$jsonDir
