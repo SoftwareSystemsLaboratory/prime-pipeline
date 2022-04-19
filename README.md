@@ -16,13 +16,11 @@
     - [Operating System](#operating-system)
     - [Shell Software](#shell-software)
       - [Required Shell Software](#required-shell-software)
-      - [Optional Shell Software](#optional-shell-software)
     - [Python Software](#python-software)
   - [How To Use](#how-to-use)
-    - [Default Usage](#default-usage)
-    - [Custom URL](#custom-url)
-    - [Iterating Over A List of URLS](#iterating-over-a-list-of-urls)
-      - [Parallel Execution](#parallel-execution)
+    - [Setting up the Pipeline](#setting-up-the-pipeline)
+    - [Executing the Pipeline](#executing-the-pipeline)
+    - [Google Drive Upload](#google-drive-upload)
 
 ## About
 
@@ -47,49 +45,46 @@ It is recomendded to run on Mac OS or Linux. However, if you are on a Windows ma
 #### Required Shell Software
 
 - `git`
-
-#### Optional Shell Software
-
-For reasons why you might want to install this software, see the [Parallel Execution](#parallel-execution) section.
-
 - `parallel`
+- `wget`
+- `rclone`
+- `tmux`
+- `python3.10`
 
 ### Python Software
 
-All listed Python software assumes that you have downloaded and installed **Python 3.9.6** or greater.
+All listed Python software assumes that you have downloaded and installed **Python 3.10** or greater.
 
 - `ssl-metrics-meta`
 
 You can install the Python software with this one-liner:
 
-`pip install --upgrade pip ssl-metrics-meta`
+`pip install --upgrade pip ssl-metrics-meta` or `./setup.bash`
 
 ## How To Use
 
-### Default Usage
+### Setting up the Pipeline
 
-The default usage analyzes the [golang/go](https://github.com/golang/go) project.
+Run the following one liner to setup the pipeline:
 
-`./ssl-metrics-pipeline.bash`
+- `wget -qO- https://raw.githubusercontent.com/SoftwareSystemsLaboratory/ssl-metrics-pipeline/main/setup.bash | bash`
 
-### Custom URL
+### Executing the Pipeline
 
-By specifying the `-u` flag, you can point the pipeline at a GitHub project URL.
+`pipeline.bash` contains the code to start the pipeline.
+It takes a GitHub Personal Access Token and a file containing a list of Github Repository URLs as positional arguements.
 
-`./ssl-metrics-pipeline.bash -u https://github.com/numpy/numpy`
+For an example GitHub Repository URL file, see [githubRepositories.txt](githubRepositories.txt).
 
-### Iterating Over A List of URLs
+- `./pipeline.bash $GH_TOKEN githubRepositories.txt`
 
-If you have a list of URLs, you can pipe it into the progam with the following (or similar) syntax:
+Where `$GH_TOKEN` is a GitHub Personal Access Token or shell variable referencing it.
 
-`cat URLs.txt | xargs -l ./ssl-metrics-pipeline.bash -u`
+`githubRepositories.txt` can be replaced with any file containing GitHub Repository URLs.
 
-**NOTE**: Replace `URLs.txt` with a `.txt` file with every line containing **1 (one)** GitHub URL.
+**NOTE:** The name of this text file will be used to create a folder containing all of the repositories analyzed and their analysis files.
 
-#### Parallel Execution
+### Google Drive Upload
 
-If you have `parallel` installed, you can use the following (or similar) syntax to process mutliple repositories at once.
-
-`cat URLs.txt | parallel -j n ./ssl-metrics-pipeline.bash -u`
-
-**NOTE**: Replace `n` with the number of jobs you want to execute in parallel.
+This pipeline is configured to upload results to a Google Drive folder via `rclone`.
+If you don't want to do this, comment out or change the last lines in the `runner.bash` file.
