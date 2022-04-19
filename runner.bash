@@ -8,10 +8,12 @@ githubShortCode=$(echo $1 | sed -e 's/https:\/\/github.com\///g')
 rootDir=$(basename $3 .txt)
 jsonDir=json-$dt
 graphsDir=graphs-$dt
+logDir=log-$dt
 
 mkdir $rootDir
 mkdir $rootDir/$jsonDir
 mkdir $rootDir/$graphsDir
+mkdir $rootDir/$logDir
 
 source env/bin/activate
 
@@ -19,10 +21,10 @@ git clone $1
 git -C $repositoryFolder pull
 
 # Extract commits
-ssl-metrics-git-commits-loc-extract -d $repositoryFolder -b HEAD -o $rootDir/$jsonDir/commits_$repositoryFolder-$dt.json
+ssl-metrics-git-commits-loc-extract -d $repositoryFolder -b HEAD -o $rootDir/$jsonDir/commits_$repositoryFolder-$dt.json --log $rootDir/$logDir/commits_$repositoryFolder-$dt.log
 
 # Extract issues
-ssl-metrics-github-issues-collect -p -r $githubShortCode -o $rootDir/$jsonDir/issues_$repositoryFolder-$dt.json -t $token
+ssl-metrics-github-issues-collect -p -r $githubShortCode -o $rootDir/$jsonDir/issues_$repositoryFolder-$dt.json -t $token --log $rootDir/$logDir/issues_$repositoryFolder-$dt.log
 
 # Compute bus factor
 ssl-metrics-git-bus-factor-compute -i $rootDir/$jsonDir/commits_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/bf_$repositoryFolder-$dt.json
@@ -51,3 +53,4 @@ ssl-metrics-github-issue-spoilage-graph -i $rootDir/$jsonDir/is_$repositoryFolde
 # Sync outputs to GDrive
 rclone copy $rootDir/$jsonDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir/$jsonDir
 rclone copy $rootDir/$graphsDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir/$graphsDir
+rclone copy $rootDir/$graphsDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir/$logDir
