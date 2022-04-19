@@ -53,3 +53,4 @@ ssl-metrics-github-issue-spoilage-graph -i $rootDir/$jsonDir/is_$repositoryFolde
 # Sync outputs to GDrive
 rclone copy $rootDir/$jsonDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir/$jsonDir
 rclone copy $rootDir/$graphsDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir/$graphsDir
+rclone copy $rootDir/$graphsDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir/$logDir
