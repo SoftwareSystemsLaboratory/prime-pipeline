@@ -6,13 +6,13 @@ repositoryFolder=$(basename $1 .git)
 githubShortCode=$(echo $1 | sed -e 's/https:\/\/github.com\///g')
 
 rootDir=$(basename $3 .txt)
-jsonDir=json-$dt
-graphsDir=graphs-$dt
-logDir=log-$dt
+jsonDir=json
+pdfDir=pdfs
+logDir=logs
 
 mkdir $rootDir
 mkdir $rootDir/$jsonDir
-mkdir $rootDir/$graphsDir
+mkdir $rootDir/$pdfDir
 mkdir $rootDir/$logDir
 
 source env/bin/activate
@@ -21,36 +21,38 @@ git clone $1
 git -C $repositoryFolder pull
 
 # Extract commits
-ssl-metrics-git-commits-loc-extract -d $repositoryFolder -b HEAD -o $rootDir/$jsonDir/commits_$repositoryFolder-$dt.json --log $rootDir/$logDir/commits_$repositoryFolder-$dt.log
+ssl-metrics-git-commits-loc-extract -d $repositoryFolder -b HEAD -o $rootDir/$jsonDir/$repositoryFolder-$dt-commits.json --log $rootDir/$logDir/$repositoryFolder-$dt-commits.log
 
 # Extract issues
-ssl-metrics-github-issues-collect -p -r $githubShortCode -o $rootDir/$jsonDir/issues_$repositoryFolder-$dt.json -t $token --log $rootDir/$logDir/issues_$repositoryFolder-$dt.log
+ssl-metrics-github-issues-collect -p -r $githubShortCode -o $rootDir/$jsonDir/$repositoryFolder-$dt-issues.json -t $token --log $rootDir/$logDir/$repositoryFolder-$dt-issues.log
 
 # Compute bus factor
-ssl-metrics-git-bus-factor-compute -i $rootDir/$jsonDir/commits_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/bf_$repositoryFolder-$dt.json
+ssl-metrics-git-bus-factor-compute -i $rootDir/$jsonDir/$repositoryFolder-$dt-commits.json -o $rootDir/$jsonDir/$repositoryFolder-$dt-bf.json
 
 # Graph bus factor
-ssl-metrics-git-bus-factor-graph -i $rootDir/$jsonDir/bf_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/bf_$repositoryFolder-$dt.pdf --type bar --title $githubShortCode" Bus Factor" --x-label "Day" --y-label "Bus Factor" --stylesheet style.mplstyle
+ssl-metrics-git-bus-factor-graph -i $rootDir/$jsonDir/$repositoryFolder-$dt-bf.json -o $rootDir/$pdfDir/$repositoryFolder-$dt-bf.pdf --type bar --title $githubShortCode" Bus Factor" --x-label "Day" --y-label "Bus Factor" --stylesheet style.mplstyle
+ssl-metrics-git-bus-factor-graph -i $rootDir/$jsonDir/$repositoryFolder-$dt-bf.json -o $rootDir/$repositoryFolder-$dt-bf.png --type bar --title $githubShortCode" Bus Factor" --x-label "Day" --y-label "Bus Factor" --stylesheet style.mplstyle
 
 # Compute issue density
-ssl-metrics-github-issue-density-compute -c $rootDir/$jsonDir/commits_$repositoryFolder-$dt.json -i $rootDir/$jsonDir/issues_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/id_$repositoryFolder-$dt.json
+ssl-metrics-github-issue-density-compute -c $rootDir/$jsonDir/$repositoryFolder-$dt-commits.json -i $rootDir/$jsonDir/$repositoryFolder-$dt-issues.json -o $rootDir/$jsonDir/$repositoryFolder-$dt-id.json
 
 # Graph issue density
-ssl-metrics-github-issue-density-graph -i $rootDir/$jsonDir/id_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/id_$repositoryFolder-$dt.pdf --title $githubShortCode" Issue Density" --x-label "Day" --y-label "Issue Density" --stylesheet style.mplstyle
+ssl-metrics-github-issue-density-graph -i $rootDir/$jsonDir/$repositoryFolder-$dt-id.json -o $rootDir/$pdfDir/$repositoryFolder-$dt-id.pdf --title $githubShortCode" Issue Density" --x-label "Day" --y-label "Issue Density" --stylesheet style.mplstyle
+ssl-metrics-github-issue-density-graph -i $rootDir/$jsonDir/$repositoryFolder-$dt-id.json -o $rootDir/$repositoryFolder-$dt-id.png --title $githubShortCode" Issue Density" --x-label "Day" --y-label "Issue Density" --stylesheet style.mplstyle
 
 # Compute productivity
-ssl-metrics-git-productivity-compute -i $rootDir/$jsonDir/commits_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/p_$repositoryFolder-$dt.json
+ssl-metrics-git-productivity-compute -i $rootDir/$jsonDir/$repositoryFolder-$dt-commits.json -o $rootDir/$jsonDir/$repositoryFolder-$dt-p.json
 
 # Graph productivity
-ssl-metrics-git-productivity-graph -i $rootDir/$jsonDir/p_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/p_$repositoryFolder-$dt.pdf --title $githubShortCode" Productivity" --x-label "Day" --y-label "Productivity" --stylesheet style.mplstyle
+ssl-metrics-git-productivity-graph -i $rootDir/$jsonDir/$repositoryFolder-$dt-p.json -o $rootDir/$pdfDir/$repositoryFolder-$dt-p.pdf --title $githubShortCode" Productivity" --x-label "Day" --y-label "Productivity" --stylesheet style.mplstyle
+ssl-metrics-git-productivity-graph -i $rootDir/$jsonDir/$repositoryFolder-$dt-p.json -o $rootDir/$repositoryFolder-$dt-p.png --title $githubShortCode" Productivity" --x-label "Day" --y-label "Productivity" --stylesheet style.mplstyle
 
 # Compute issue spoilage
-ssl-metrics-github-issue-spoilage-compute -i $rootDir/$jsonDir/issues_$repositoryFolder-$dt.json -o $rootDir/$jsonDir/is_$repositoryFolder-$dt.json
+ssl-metrics-github-issue-spoilage-compute -i $rootDir/$jsonDir/$repositoryFolder-$dt-issues.json -o $rootDir/$jsonDir/$repositoryFolder-$dt-is.json
 
 # Graph issue spoilage
-ssl-metrics-github-issue-spoilage-graph -i $rootDir/$jsonDir/is_$repositoryFolder-$dt.json -o $rootDir/$graphsDir/is_$repositoryFolder-$dt.pdf --title $githubShortCode" Issue Spoilage" --x-label "Day" --y-label "Issue Spoilage" --stylesheet style.mplstyle
+ssl-metrics-github-issue-spoilage-graph -i $rootDir/$jsonDir/$repositoryFolder-$dt-is.json -o $rootDir/$pdfDir/$repositoryFolder-$dt-is.pdf --title $githubShortCode" Issue Spoilage" --x-label "Day" --y-label "Issue Spoilage" --stylesheet style.mplstyle
+ssl-metrics-github-issue-spoilage-graph -i $rootDir/$jsonDir/$repositoryFolder-$dt-is.json -o $rootDir/$repositoryFolder-$dt-is.png --title $githubShortCode" Issue Spoilage" --x-label "Day" --y-label "Issue Spoilage" --stylesheet style.mplstyle
 
 # Sync outputs to GDrive
-rclone copy $rootDir/$jsonDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir/$jsonDir
-rclone copy $rootDir/$graphsDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir/$graphsDir
-rclone copy $rootDir/$graphsDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir/$logDir
+rclone copy $rootDir/$jsonDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir
