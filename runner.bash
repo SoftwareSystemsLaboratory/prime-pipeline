@@ -55,4 +55,4 @@ ssl-metrics-github-issue-spoilage-graph -i $rootDir/$jsonDir/$repositoryFolder-$
 ssl-metrics-github-issue-spoilage-graph -i $rootDir/$jsonDir/$repositoryFolder-$dt-is.json -o $rootDir/$repositoryFolder-$dt-is.png --title $githubShortCode" Issue Spoilage" --x-label "Day" --y-label "Issue Spoilage" --stylesheet style.mplstyle
 
 # Sync outputs to GDrive
-rclone copy $rootDir/$jsonDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir
+rclone copy $rootDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir
