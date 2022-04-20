@@ -20,6 +20,11 @@ source env/bin/activate
 git clone $1
 git -C $repositoryFolder pull
 
+IFS="/"
+readarr -a strarr <<< $1
+owner="${strarr[3]}"
+repo="echo "${strarr[4]}"
+
 # Extract commits
 ssl-metrics-git-commits-loc-extract -d $repositoryFolder -b HEAD -o $rootDir/$jsonDir/$repositoryFolder-$dt-commits.json --log $rootDir/$logDir/$repositoryFolder-$dt-commits.log
 
