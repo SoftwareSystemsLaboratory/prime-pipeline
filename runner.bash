@@ -41,11 +41,11 @@ ssl-metrics-github-issue-density-graph -i $rootDir/$jsonDir/$repositoryFolder-id
 ssl-metrics-github-issue-density-graph -i $rootDir/$jsonDir/$repositoryFolder-id.json -o $rootDir/$repositoryFolder-id.png --title $githubShortCode" Issue Density" --x-label "Day" --y-label "Issue Density" --stylesheet style.mplstyle
 
 # Compute productivity
-ssl-metrics-git-productivity-compute -i $rootDir/$jsonDir/$repositoryFolder-commits.json -o $rootDir/$jsonDir/$repositoryFolder-p.json
+ssl-metrics-git-productivity-compute -i $rootDir/$jsonDir/$repositoryFolder-commits.json -o $rootDir/$jsonDir/$repositoryFolder-pr.json
 
 # Graph productivity
-ssl-metrics-git-productivity-graph -i $rootDir/$jsonDir/$repositoryFolder-p.json -o $rootDir/$pdfDir/$repositoryFolder-p.pdf --title $githubShortCode" Productivity" --x-label "Day" --y-label "Productivity" --stylesheet style.mplstyle
-ssl-metrics-git-productivity-graph -i $rootDir/$jsonDir/$repositoryFolder-p.json -o $rootDir/$repositoryFolder-p.png --title $githubShortCode" Productivity" --x-label "Day" --y-label "Productivity" --stylesheet style.mplstyle
+ssl-metrics-git-productivity-graph -i $rootDir/$jsonDir/$repositoryFolder-pr.json -o $rootDir/$pdfDir/$repositoryFolder-p.pdf --title $githubShortCode" Productivity" --x-label "Day" --y-label "Productivity" --stylesheet style.mplstyle
+ssl-metrics-git-productivity-graph -i $rootDir/$jsonDir/$repositoryFolder-pr.json -o $rootDir/$repositoryFolder-p.png --title $githubShortCode" Productivity" --x-label "Day" --y-label "Productivity" --stylesheet style.mplstyle
 
 # Compute issue spoilage
 ssl-metrics-github-issue-spoilage-compute -i $rootDir/$jsonDir/$repositoryFolder-issues.json -o $rootDir/$jsonDir/$repositoryFolder-is.json
