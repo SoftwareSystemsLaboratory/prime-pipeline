@@ -3,7 +3,7 @@
 dt=$(date -d "today" +"%Y_%m_%d_%H_%M")
 jobsDir=jobs-$dt
 
-git clone https://github.com/SoftwareSystemsLaboratory/ssl-metrics-pipeline $jobsDir
+git clone https://github.com/SoftwareSystemsLaboratory/clime-pipeline $jobsDir
 
 cd $jobsDir
 
