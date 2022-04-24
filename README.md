@@ -1,17 +1,13 @@
-# Software Systems Laboratory Metrics Pipeline
+# CLIME Pipeline
 
-> A `bash` script to calculate the metrics of a remote GitHub repository
-
-![[https://img.shields.io/badge/shell-bash-blue](https://img.shields.io/badge/shell-bash-blue)](https://img.shields.io/badge/shell-bash-blue)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5967365.svg)](https://doi.org/10.5281/zenodo.5967365)
-[![Release Project](https://github.com/SoftwareSystemsLaboratory/ssl-metrics-pipeline/actions/workflows/release.yml/badge.svg)](https://github.com/SoftwareSystemsLaboratory/ssl-metrics-pipeline/actions/workflows/release.yml)
-![[https://img.shields.io/badge/license-BSD--3-yellow](https://img.shields.io/badge/license-BSD--3-yellow)](https://img.shields.io/badge/license-BSD--3-yellow)
+> An example pipeline that computes metrics of a repository
 
 ## Table of Contents
 
-- [Software Systems Laboratory Metrics Pipeline](#software-systems-laboratory-metrics-pipeline)
+- [CLIME Pipeline](#clime-pipeline)
   - [Table of Contents](#table-of-contents)
   - [About](#about)
+    - [Licensing](#licensing)
   - [Tooling](#tooling)
     - [Operating System](#operating-system)
     - [Shell Software](#shell-software)
@@ -24,9 +20,11 @@
 
 ## About
 
-The Software Systems Laboratory (SSL) Pipeline Project is a `bash` script that can be executed within a *configured* environment to calculate metrics for a (or multiple) **remote** repositories hosted on GitHub.
+The Software Systems Laboratory (SSL) CLIME Pipeline Project is an example pipeline that computes metrics of a repository.
 
 The pipeline *only* calculates metrics for the `HEAD` branch of a repository.
+
+### Licensing
 
 This project is licensed under the BSD-3-Clause. See the [LICENSE](LICENSE) for more information.
 
@@ -55,11 +53,11 @@ It is recomendded to run on Mac OS or Linux. However, if you are on a Windows ma
 
 All listed Python software assumes that you have downloaded and installed **Python 3.10** or greater.
 
-- `ssl-metrics-meta`
+- `clime-metrics`
 
 You can install the Python software with this one-liner:
 
-`pip install --upgrade pip ssl-metrics-meta` or `./setup.bash`
+`pip install --upgrade pip clime-metrics` or `./setup.bash`
 
 ## How To Use
 
