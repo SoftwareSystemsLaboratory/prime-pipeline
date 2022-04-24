@@ -1,5 +1,8 @@
 # CLIME Pipeline
 
+[![DOI](https://zenodo.org/badge/455386614.svg)](https://zenodo.org/badge/latestdoi/455386614)
+[![Release Project](https://github.com/SoftwareSystemsLaboratory/clime-pipeline/actions/workflows/release.yml/badge.svg)](https://github.com/SoftwareSystemsLaboratory/clime-pipeline/actions/workflows/release.yml)
+
 > An example pipeline that computes metrics of a repository
 
 ## Table of Contents
