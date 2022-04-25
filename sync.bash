@@ -1,3 +1,3 @@
 #!/bin/bash
 # Sync outputs to GDrive
-rclone copy $rootDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir
+rclone copy $1 gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$1
