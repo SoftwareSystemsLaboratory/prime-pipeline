@@ -3,4 +3,4 @@
 token=$1
 repositoryListFile=$2
 
-cat $repositoryListFile | parallel -j 5 tmux new-session -d "./runner.bash {} $token $repositoryListFile"
+cat $repositoryListFile | parallel tmux new-session -d "./runner.bash {} $token $repositoryListFile"
