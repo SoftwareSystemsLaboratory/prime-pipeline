@@ -68,7 +68,7 @@ You can install the Python software with this one-liner:
 
 Run the following one liner to setup the pipeline:
 
-- `wget -qO- https://raw.githubusercontent.com/SoftwareSystemsLaboratory/ssl-metrics-pipeline/main/setup.bash | bash`
+- `wget -qO- https://raw.githubusercontent.com/SoftwareSystemsLaboratory/clime-pipeline/main/setup.bash | bash`
 
 ### Executing the Pipeline
 
