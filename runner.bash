@@ -53,6 +53,3 @@ clime-issue-spoilage-compute -i $rootDir/$jsonDir/$repositoryFolder-issues.json 
 # Graph issue spoilage
 clime-issue-spoilage-graph -i $rootDir/$jsonDir/$repositoryFolder-is.json -o $rootDir/$pdfDir/$repositoryFolder-is.pdf --title $githubShortCode" Issue Spoilage" --x-label "Day" --y-label "Issue Spoilage" --stylesheet style.mplstyle
 clime-issue-spoilage-graph -i $rootDir/$jsonDir/$repositoryFolder-is.json -o $rootDir/$repositoryFolder-is.png --title $githubShortCode" Issue Spoilage" --x-label "Day" --y-label "Issue Spoilage" --stylesheet style.mplstyle
-
-# Sync outputs to GDrive
-rclone copy $rootDir gdrive:"Software and Systems Laboratory"/"Paper Writing"/"figures"/$dt/$rootDir
