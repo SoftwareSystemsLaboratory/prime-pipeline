@@ -5,15 +5,10 @@ token=$2
 repositoryFolder=$(basename $1 .git)
 githubShortCode=$(echo $1 | sed -e 's/https:\/\/github.com\///g')
 
-rootDir=$(basename $3 .txt)
+rootDir=$(basename $2 .txt)
 jsonDir=json
 pdfDir=pdfs
 logDir=logs
-
-mkdir $rootDir
-mkdir $rootDir/$jsonDir
-mkdir $rootDir/$pdfDir
-mkdir $rootDir/$logDir
 
 source env/bin/activate
 
@@ -27,11 +22,16 @@ clime-git-commits-extract -d $repositoryFolder -b HEAD -o $rootDir/$jsonDir/$rep
 clime-gh-issues -p -r $githubShortCode -o $rootDir/$jsonDir/$repositoryFolder-issues.json -t $token --log $rootDir/$logDir/$repositoryFolder-issues.log
 
 # Compute bus factor
-clime-git-bus-factor-compute -i $rootDir/$jsonDir/$repositoryFolder-commits.json -o $rootDir/$jsonDir/$repositoryFolder-bf.json --bucket 30
+clime-git-bus-factor-compute -i $rootDir/$jsonDir/$repositoryFolder-commits.json -o $rootDir/$jsonDir/$repositoryFolder-bf-30.json --bucket 30
+clime-git-bus-factor-compute -i $rootDir/$jsonDir/$repositoryFolder-commits.json -o $rootDir/$jsonDir/$repositoryFolder-bf-7.json --bucket 7
+
 
 # Graph bus factor
-clime-git-bus-factor-graph -i $rootDir/$jsonDir/$repositoryFolder-bf.json -o $rootDir/$pdfDir/$repositoryFolder-bf.pdf --type bar --title $githubShortCode" Bus Factor (Binned Every 30 Days)" --x-label "Day" --y-label "Bus Factor" --stylesheet style.mplstyle
-clime-git-bus-factor-graph -i $rootDir/$jsonDir/$repositoryFolder-bf.json -o $rootDir/$repositoryFolder-bf.png --type bar --title $githubShortCode" Bus Factor" --x-label "Day" --y-label "Bus Factor" --stylesheet style.mplstyle
+clime-git-bus-factor-graph -i $rootDir/$jsonDir/$repositoryFolder-bf-30.json -o $rootDir/$pdfDir/$repositoryFolder-bf-30.pdf --type bar --title $githubShortCode" Bus Factor (Binned Every 30 Days)" --x-label "Day" --y-label "Bus Factor" --stylesheet style.mplstyle
+clime-git-bus-factor-graph -i $rootDir/$jsonDir/$repositoryFolder-bf-30.json -o $rootDir/$repositoryFolder-bf-30.png --type bar --title $githubShortCode" Bus Factor (Binned Every 30 Days)" --x-label "Day" --y-label "Bus Factor" --stylesheet style.mplstyle
+
+clime-git-bus-factor-graph -i $rootDir/$jsonDir/$repositoryFolder-bf-7.json -o $rootDir/$pdfDir/$repositoryFolder-bf-7.pdf --type bar --title $githubShortCode" Bus Factor (Binned Every 7 Days)" --x-label "Day" --y-label "Bus Factor" --stylesheet style.mplstyle
+clime-git-bus-factor-graph -i $rootDir/$jsonDir/$repositoryFolder-bf-7.json -o $rootDir/$repositoryFolder-bf-7.png --type bar --title $githubShortCode" Bus Factor (Binned Every 7 Days)" --x-label "Day" --y-label "Bus Factor" --stylesheet style.mplstyle
 
 # Compute issue density
 clime-issue-density-compute -c $rootDir/$jsonDir/$repositoryFolder-commits.json -i $rootDir/$jsonDir/$repositoryFolder-issues.json -o $rootDir/$jsonDir/$repositoryFolder-id.json
