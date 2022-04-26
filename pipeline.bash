@@ -3,4 +3,10 @@
 token=$1
 repositoryListFile=$2
 
+rootDir=$(basename $2 .txt)
+mkdir $rootDir
+mkdir $rootDir/$jsonDir
+mkdir $rootDir/$pdfDir
+mkdir $rootDir/$logDir
+
 cat $repositoryListFile | parallel tmux new-session -d "./runner.bash {} $token $repositoryListFile"
