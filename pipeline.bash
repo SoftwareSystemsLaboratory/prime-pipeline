@@ -4,6 +4,10 @@ token=$1
 repositoryListFile=$2
 
 rootDir=$(basename $2 .txt)
+jsonDir=json
+pdfDir=pdfs
+logDir=logs
+
 mkdir $rootDir
 mkdir $rootDir/$jsonDir
 mkdir $rootDir/$pdfDir
