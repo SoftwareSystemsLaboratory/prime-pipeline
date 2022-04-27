@@ -5,7 +5,7 @@ token=$2
 repositoryFolder=$(basename $1 .git)
 githubShortCode=$(echo $1 | sed -e 's/https:\/\/github.com\///g')
 
-rootDir=$(basename $2 .txt)
+rootDir=$(basename $3 .txt)
 jsonDir=json
 pdfDir=pdfs
 logDir=logs
