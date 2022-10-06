@@ -1,4 +1,4 @@
-# CLIME Pipeline
+# PRIME Pipeline
 
 [![DOI](https://zenodo.org/badge/455386614.svg)](https://zenodo.org/badge/latestdoi/455386614)
 [![Release Project](https://github.com/SoftwareSystemsLaboratory/clime-pipeline/actions/workflows/release.yml/badge.svg)](https://github.com/SoftwareSystemsLaboratory/clime-pipeline/actions/workflows/release.yml)
@@ -7,7 +7,7 @@
 
 ## Table of Contents
 
-- [CLIME Pipeline](#clime-pipeline)
+- [PRIME Pipeline](#clime-pipeline)
   - [Table of Contents](#table-of-contents)
   - [About](#about)
     - [Licensing](#licensing)
@@ -23,7 +23,7 @@
 
 ## About
 
-The Software Systems Laboratory (SSL) CLIME Pipeline Project is an example pipeline that computes metrics of a repository.
+The Software Systems Laboratory (SSL) PRIME Pipeline Project is an example pipeline that computes metrics of a repository.
 
 The pipeline *only* calculates metrics for the `HEAD` branch of a repository.
 
